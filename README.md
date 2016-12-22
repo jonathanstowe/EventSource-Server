@@ -1,4 +1,4 @@
-# EventSource-Server
+# EventSource::Server
 
 A simple handler to provide Server Sent Events from HTTP::Server::Tiny / Crust applications
 
