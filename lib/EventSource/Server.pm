@@ -1,5 +1,57 @@
 use v6.c;
 
+=begin pod
+
+=head1 NAME
+
+EventSource::Server - A simple handler to provide Server Sent Events from HTTP::Server::Tiny / Crust applications
+
+=head1 SYNOPSIS
+
+This sends out an event with the DateTime string every second
+
+=begin code
+use EventSource::Server;
+use HTTP::Server::Tiny;
+
+my $supply = Supply.interval(1).map( { EventSource::Server::Event.new(type => 'tick', data => DateTime.now.Str) } );
+
+my &es = EventSource::Server.new(:$supply);
+
+HTTP::Server::Tiny.new(port => 7798).run(&es)
+
+=end code
+
+And in some Javascript program somewhere else:
+
+=begin code
+
+var EventSource = require('eventsource');
+
+var v = new EventSource(' http://127.0.0.1:7798');
+
+v.addEventListener("tick", function(e) {
+    console.info(e);
+
+}, false);
+=end code
+
+See also the examples directory in this distribution.
+
+=head1 DESCRIPTION
+
+This provides a simple mechanism for creating a source of
+L<Server Sent Events|https://www.w3.org/TR/eventsource/> in a
+L<HTTP::Server::Tiny|https://github.com/tokuhirom/p6-HTTP-Server-Tiny>
+server.
+
+The EventSource interface is implemented by  most modern web browsers and
+provides a lightweight alternative to Websockets for those applications
+where only a uni-directional message is required (for example for
+notifications,)
+
+=end pod
+
 class EventSource::Server does Callable {
     class Event {
         has Str $.type;
