@@ -9,7 +9,7 @@
    ],
    "description" : "A simple handler to provide Server Sent Events from a PSGI app",
    "provides" : {
-      "Manifesto" : "lib/EventSource/Server.pm"
+      "EventSource::Server" : "lib/EventSource/Server.pm"
    },
    "source-url" : "https://github.com/jonathanstowe/EventSource-Server.git",
    "depends" : [],
@@ -26,5 +26,5 @@
    },
    "license" : "perl",
    "name" : "EventSource::Server",
-   "version" : "0.0.1"
+   "version" : "0.0.2"
 }
