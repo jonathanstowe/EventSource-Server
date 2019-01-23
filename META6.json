@@ -1,5 +1,9 @@
 {
   "name": "EventSource::Server",
+  "version": "0.0.4",
+  "auth": "github:jonathanstowe",
+  "api": "1.0",
+  "description": "A simple handler to provide Server Sent Events from a PSGI app",
   "source-url": "https://github.com/jonathanstowe/EventSource-Server.git",
   "support": {
     "source": "https://github.com/jonathanstowe/EventSource-Server.git",
@@ -7,16 +11,9 @@
     "email" : "jns+evensourceserver@gellyfish.co.uk"
   },
   "perl": "6.*",
-  "resources": [
-    
-  ],
-  "build-depends": [
-    
-  ],
-  "auth": "github:jonathanstowe",
-  "depends": [
-    
-  ],
+  "resources": [ ],
+  "build-depends": [ ],
+  "depends": [ ],
   "tags": [
     "async",
     "event",
@@ -29,10 +26,8 @@
   "provides": {
     "EventSource::Server": "lib/EventSource/Server.pm"
   },
-  "version": "0.0.3",
   "authors": [
     "Jonathan Stowe <jns+gh@gellyfish.co.uk>"
   ],
-  "description": "A simple handler to provide Server Sent Events from a PSGI app",
   "meta-version": "0"
 }
