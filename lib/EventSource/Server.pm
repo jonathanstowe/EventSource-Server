@@ -4,7 +4,7 @@ use v6;
 
 =head1 NAME
 
-EventSource::Server - A simple handler to provide Server Sent Events from HTTP::Server::Tiny / Crust applications
+EventSource::Server - A simple handler to provide Server Sent Events from Raku applications
 
 =head1 SYNOPSIS
 

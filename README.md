@@ -1,6 +1,6 @@
 # EventSource::Server
 
-A simple handler to provide Server Sent Events from HTTP::Server::Tiny / Crust applications
+A simple handler to provide Server Sent Events from Raku applications
 
 [![Build Status](https://travis-ci.org/jonathanstowe/EventSource-Server.svg?branch=master)](https://travis-ci.org/jonathanstowe/EventSource-Server)
 
@@ -50,7 +50,7 @@ notifications,)
 
 ## Installation
 
-Assuming you have a working installation of Rakudo Perl 6 with ```zef```
+Assuming you have a working installation of Rakudo with ```zef```
 installed then you should be able to install this with:
 
     zef install EventSource::Server
@@ -75,4 +75,4 @@ https://github.com/jonathanstowe/EventSource-Server/issues
 This is free software, please see the [LICENCE](LICENCE) file in the
 distribution.
 
-© Jonathan Stowe 2017 - 2019
+© Jonathan Stowe 2017 - 2020

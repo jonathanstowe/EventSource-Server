@@ -1,9 +1,9 @@
 {
   "name": "EventSource::Server",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "auth": "github:jonathanstowe",
   "api": "1.0",
-  "description": "A simple handler to provide Server Sent Events from a PSGI app",
+  "description": "A simple handler to provide Server Sent Events from a Raku application",
   "source-url": "https://github.com/jonathanstowe/EventSource-Server.git",
   "support": {
     "source": "https://github.com/jonathanstowe/EventSource-Server.git",
@@ -11,6 +11,7 @@
     "email" : "jns+evensourceserver@gellyfish.co.uk"
   },
   "perl": "6.*",
+  "raku": "6.*",
   "resources": [ ],
   "build-depends": [ ],
   "depends": [ ],
@@ -29,5 +30,5 @@
   "authors": [
     "Jonathan Stowe <jns+gh@gellyfish.co.uk>"
   ],
-  "meta-version": "0"
+  "meta-version": "1"
 }
