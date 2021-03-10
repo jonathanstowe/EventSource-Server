@@ -73,12 +73,7 @@ notifications,)
 
 ## Installation
 
-<<<<<<< HEAD
-Assuming you have a working installation of Rakudo with ```zef```
-installed then you should be able to install this with:
-=======
 Assuming you have a working installation of Rakudo with `zef` installed then you should be able to install this with:
->>>>>>> 32c9fda... Add support for multi-line data
 
     zef install EventSource::Server
 
