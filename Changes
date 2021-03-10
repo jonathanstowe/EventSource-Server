@@ -1,3 +1,7 @@
+v0.0.6		Wed 10 Mar 21:23:06 GMT 2021
+	* Support for multi-line data
+	* Renaming
+	* Add GH action
 v0.0.5      Fri 17 Jan 09:58:49 GMT 2020
     * Small renaming
 v0.0.4      Wed 23 Jan 13:54:28 GMT 2019

@@ -62,7 +62,7 @@ class EventSource::Server does Callable {
             if $!type.defined {
                 $str ~= "event: { $!type }\r\n";
             }
-            $str ~= "data: { $!data }\r\n\r\n";
+            $str ~= $!data.lines.map( -> $v { "data: $v" }).join("\r\n") ~ "\r\n\r\n";
 
             $str;
         }
@@ -117,4 +117,4 @@ class EventSource::Server does Callable {
     }
 }
 
-# vim: ft=perl6
+# vim: ft=raku

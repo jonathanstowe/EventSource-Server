@@ -2,18 +2,27 @@
   "type": "layout",
   "children": [
     {
+      "type": "file",
+      "name": "META6.json"
+    },
+    {
+      "name": "Changes",
+      "type": "file"
+    },
+    {
+      "name": "examples",
       "children": [
+        {
+          "name": "cro-json-server",
+          "type": "file"
+        },
+        {
+          "name": "cro-amqp-bridge",
+          "type": "file"
+        },
         {
           "type": "file",
           "name": "cro-tick-server"
-        },
-        {
-          "type": "file",
-          "name": "README.md"
-        },
-        {
-          "name": "amqp-bridge",
-          "type": "file"
         },
         {
           "type": "file",
@@ -22,47 +31,50 @@
         {
           "type": "file",
           "name": "tick-server"
+        },
+        {
+          "type": "file",
+          "name": "amqp-bridge"
+        },
+        {
+          "type": "file",
+          "name": "README.md"
         }
       ],
-      "purpose": null,
-      "name": "examples",
-      "type": "directory"
+      "type": "directory",
+      "purpose": null
     },
     {
       "type": "file",
-      "name": "META6.json"
+      "name": "LICENCE"
     },
     {
+      "purpose": null,
       "children": [
         {
           "name": "010-use.t",
           "type": "file"
         },
         {
-          "type": "file",
-          "name": "020-basic.t"
+          "name": "030-event.t",
+          "type": "file"
+        },
+        {
+          "name": "020-basic.t",
+          "type": "file"
         },
         {
           "name": "001-meta.t",
           "type": "file"
         }
       ],
+      "name": "t",
+      "type": "directory"
+    },
+    {
+      "type": "directory",
       "purpose": null,
-      "type": "directory",
-      "name": "t"
-    },
-    {
-      "type": "file",
-      "name": "Changes"
-    },
-    {
-      "type": "file",
-      "name": "README.md"
-    },
-    {
-      "type": "directory",
       "name": "lib",
-      "purpose": null,
       "children": [
         {
           "type": "directory",
@@ -79,7 +91,7 @@
     },
     {
       "type": "file",
-      "name": "LICENCE"
+      "name": "README.md"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "EventSource::Server",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "auth": "github:jonathanstowe",
   "api": "1.0",
   "description": "A simple handler to provide Server Sent Events from a Raku application",
@@ -8,7 +8,7 @@
   "support": {
     "source": "https://github.com/jonathanstowe/EventSource-Server.git",
     "bugtracker" : "https://github.com/jonathanstowe/EventSource-Server/issues",
-    "email" : "jns+evensourceserver@gellyfish.co.uk"
+    "email" : "jns+eventsourceserver@gellyfish.co.uk"
   },
   "perl": "6.*",
   "raku": "6.*",

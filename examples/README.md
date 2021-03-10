@@ -31,3 +31,11 @@ installed with
 
     zef install Net::AMQP
 
+## [cro-amqp-bridge](cro-amqp-bridge)
+
+This is similar to the above but using [Cro](https://cro.services/), so requires both cro and Net::AMQP.
+
+## [cro-json-server](cro-json-server)
+
+This is largely to test interoperability with multi-line data.
+

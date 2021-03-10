@@ -2,13 +2,13 @@
 
 A simple handler to provide Server Sent Events from Raku applications
 
-[![Build Status](https://travis-ci.org/jonathanstowe/EventSource-Server.svg?branch=master)](https://travis-ci.org/jonathanstowe/EventSource-Server)
+![Build Status](https://github.com/jonathanstowe/EventSource-Server/workflows/CI/badge.svg)
 
 ## Synopsis
 
 This sends out an event with the DateTime string every second
 
-```perl6
+```raku
 use EventSource::Server;
 use HTTP::Server::Tiny;
 
@@ -19,6 +19,31 @@ my &es = EventSource::Server.new(:$supply);
 
 
 HTTP::Server::Tiny.new(port => 7798).run(&es)
+```
+
+Or using Cro:
+
+```raku
+use EventSource::Server;
+
+use Cro::HTTP::Router;
+use Cro::HTTP::Server;
+
+my $supply = Supply.interval(1).map( { EventSource::Server::Event.new(type => 'tick', data => DateTime.now.Str) } );
+
+my $es = EventSource::Server.new(:$supply);
+
+my $app = route {
+    get -> {
+        content 'text/event-stream', $es.out-supply;
+    }
+};
+
+my Cro::Service $tick = Cro::HTTP::Server.new(:host<localhost>, :port<7798>, application => $app);
+
+$tick.start;
+
+react whenever signal(SIGINT) { $tick.stop; exit; }
 ```
 
 And in some Javascript program somewhere else:
@@ -38,10 +63,8 @@ See also the [examples directory](examples) in this distribution.
 
 ## Description
 
-This provides a simple mechanism for creating a source of
-[Server Sent Events](https://www.w3.org/TR/eventsource/) in a
-[HTTP::Server::Tiny](https://github.com/tokuhirom/p6-HTTP-Server-Tiny)
-server.
+This provides a simple mechanism for creating a source of [Server Sent Events](https://www.w3.org/TR/eventsource/) in a
+web server application.
 
 The EventSource interface is implemented by  most modern web browsers and
 provides a lightweight alternative to Websockets for those applications
@@ -50,8 +73,12 @@ notifications,)
 
 ## Installation
 
+<<<<<<< HEAD
 Assuming you have a working installation of Rakudo with ```zef```
 installed then you should be able to install this with:
+=======
+Assuming you have a working installation of Rakudo with `zef` installed then you should be able to install this with:
+>>>>>>> 32c9fda... Add support for multi-line data
 
     zef install EventSource::Server
 
@@ -75,4 +102,4 @@ https://github.com/jonathanstowe/EventSource-Server/issues
 This is free software, please see the [LICENCE](LICENCE) file in the
 distribution.
 
-© Jonathan Stowe 2017 - 2020
+© Jonathan Stowe 2017 - 2021

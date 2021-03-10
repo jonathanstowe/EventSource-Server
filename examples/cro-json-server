@@ -1,0 +1,27 @@
+#!/usr/bin/env raku
+
+use EventSource::Server;
+
+use Cro::HTTP::Router;
+use Cro::HTTP::Server;
+use JSON::Fast;
+
+my $supply = Supply.interval(1).map( { EventSource::Server::Event.new(type => 'message', data => to-json({ date => DateTime.now.Str, pid => $*PID } ) )  });
+
+my $es = EventSource::Server.new(:$supply);
+
+my $app = route {
+    get -> {
+        content 'text/event-stream', $es.out-supply;
+    }
+};
+
+my Cro::Service $tick = Cro::HTTP::Server.new(:host<127.0.0.1>, :port<7798>, application => $app);
+
+$tick.start;
+
+react  { whenever signal(SIGINT) { $tick.stop; exit; } }
+
+
+
+# vim: ft=raku
