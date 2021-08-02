@@ -1,6 +1,6 @@
 {
   "name": "EventSource::Server",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "auth": "github:jonathanstowe",
   "api": "1.0",
   "description": "A simple handler to provide Server Sent Events from a Raku application",
@@ -25,7 +25,7 @@
     "Test"
   ],
   "provides": {
-    "EventSource::Server": "lib/EventSource/Server.pm"
+    "EventSource::Server": "lib/EventSource/Server.rakumod"
   },
   "authors": [
     "Jonathan Stowe <jns+gh@gellyfish.co.uk>"

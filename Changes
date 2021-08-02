@@ -1,3 +1,5 @@
+v0.0.7		Mon  2 Aug 18:26:01 BST 2021
+	* Allow stopping the stream
 v0.0.6		Wed 10 Mar 21:23:06 GMT 2021
 	* Support for multi-line data
 	* Renaming

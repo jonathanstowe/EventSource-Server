@@ -43,12 +43,31 @@ See also the examples directory in this distribution.
 This provides a simple mechanism for creating a source of
 L<Server Sent Events|https://www.w3.org/TR/eventsource/> in a
 L<HTTP::Server::Tiny|https://github.com/tokuhirom/p6-HTTP-Server-Tiny>
-server.
+server or a Cro application.
 
 The EventSource interface is implemented by  most modern web browsers and
 provides a lightweight alternative to Websockets for those applications
 where only a uni-directional message is required (for example for
-notifications,)
+notifications.)
+
+=head1 METHODS
+
+=head2 out-supply
+
+This returns the C<Supply> of C<EventSource::Server::Event> encoded as a UTF-8 Blob
+which forms the event stream.  This can be passed directly to the C<content> helper of Cro
+like:
+
+     content 'text/event-stream', $e.out-supply;
+
+=head2 stop
+
+This calls C<done> on the C<out-supply>.  You may need to call this in an application
+where a client can refresh its view thus causing a new connection to the server, however
+until the previous supply is C<done> the stream will attempt to write to the now closed
+connection ( leading to a "Cannot write to a closed socket" error from your application.)
+This is most useful in an application which uses user session which enables tracking of
+per-session event streams.
 
 =end pod
 
@@ -75,6 +94,7 @@ class EventSource::Server does Callable {
     has Supply   $!out-supply;
     has Supply   $.supply;
     has Supplier $.supplier;
+    has Promise  $!control-promise = Promise.new;
 
     proto sub map-supply(|c) { * }
 
@@ -91,7 +111,18 @@ class EventSource::Server does Callable {
     }
 
     method out-supply( --> Supply ) {
-        $!out-supply //= Supply.merge(self.supplier.Supply, self.supply).map(&map-supply).map({ $_.encode });
+        $!out-supply //= supply {
+            whenever Supply.merge(self.supplier.Supply, self.supply).map(&map-supply).map({ $_.encode }) -> $m {
+                emit $m;
+            }
+            whenever $!control-promise {
+                done;
+            }
+        }
+    }
+
+    method stop( --> Nil ) {
+        $!control-promise.keep
     }
 
     # If we weren't supplied with a Supply then

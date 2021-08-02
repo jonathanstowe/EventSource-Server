@@ -60,6 +60,10 @@
           "type": "file"
         },
         {
+          "name": "040-stop.t",
+          "type": "file"
+        },
+        {
           "name": "020-basic.t",
           "type": "file"
         },
