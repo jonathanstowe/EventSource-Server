@@ -26,5 +26,8 @@ jobs:
     - name: Install dependencies
       run: zef install --deps-only --/test --test-depends .
 
+    - name: stop test
+      run: raku -I. t/040-stop.t
+
     - name: Run tests
       run: zef test -v --debug .
