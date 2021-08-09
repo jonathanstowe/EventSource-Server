@@ -1,6 +1,6 @@
 {
   "name": "EventSource::Server",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "auth": "github:jonathanstowe",
   "api": "1.0",
   "description": "A simple handler to provide Server Sent Events from a Raku application",

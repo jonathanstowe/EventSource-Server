@@ -86,7 +86,7 @@
           "purpose": null,
           "children": [
             {
-              "name": "Server.pm",
+              "name": "Server.rakumod",
               "type": "file"
             }
           ]
