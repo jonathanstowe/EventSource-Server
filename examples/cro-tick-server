@@ -7,7 +7,7 @@ use Cro::HTTP::Server;
 
 my $supply = Supply.interval(1).map( { EventSource::Server::Event.new(type => 'tick', data => DateTime.now.Str) } );
 
-my $es = EventSource::Server.new(:$supply);
+my $es = EventSource::Server.new(:$supply, :keepalive, keepalive-interval => 1 );
 
 my $app = route {
     get -> {
@@ -15,7 +15,7 @@ my $app = route {
     }
 };
 
-my Cro::Service $tick = Cro::HTTP::Server.new(:host<localhost>, :port<7798>, application => $app);
+my Cro::Service $tick = Cro::HTTP::Server.new(:host<127.0.0.1>, :port<7798>, application => $app);
 
 $tick.start;
 

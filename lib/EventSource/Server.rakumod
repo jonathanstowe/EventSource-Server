@@ -52,6 +52,33 @@ notifications.)
 
 =head1 METHODS
 
+=head2 new
+
+The constructor takes named arguments:
+
+=item supply
+
+A Supply that provides the events, if this is not provided then the events can be
+emitted onto the EventSource::Server object directly.
+
+=item keepalive
+
+If this adverb is supplied then a 'keep-alive' chunk will be emitted on the stream at
+the frequency specified by C<keepalive-frequency> (the default is 60 seconds.) The
+"chunk" is basically a 0 byte followed by CRLF and will not cause an event in the
+connected client.  This may be useful with some clients that periodically reconnect
+if there is no traffic on the stream, or some reverse proxy that may disconnect
+after some time with no data.
+
+=item keepalive-frequence
+
+The frequency in seconds of the keepalive chunks if <keepalive> is set.  The
+default is 60.
+
+=head2 emit
+
+This emits an event onto the internal supplier to be merged into the C<out-supply>.
+
 =head2 out-supply
 
 This returns the C<Supply> of C<EventSource::Server::Event> encoded as a UTF-8 Blob
@@ -95,6 +122,8 @@ class EventSource::Server does Callable {
     has Supply   $.supply;
     has Supplier $.supplier;
     has Promise  $!control-promise = Promise.new;
+    has Int      $.keepalive-interval = 60;
+    has Bool     $.keepalive;
 
     proto sub map-supply(|c) { * }
 
@@ -117,6 +146,11 @@ class EventSource::Server does Callable {
             }
             whenever $!control-promise {
                 done;
+            }
+            whenever Supply.interval($!keepalive-interval) {
+                if $!keepalive {
+                    emit Buf(0) ~ "\r\n".encode;
+                }
             }
         }
     }
