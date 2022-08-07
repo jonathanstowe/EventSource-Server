@@ -1,34 +1,36 @@
 {
-  "name": "EventSource::Server",
-  "version": "0.0.10",
-  "auth": "github:jonathanstowe",
-  "api": "1.0",
-  "description": "A simple handler to provide Server Sent Events from a Raku application",
-  "source-url": "https://github.com/jonathanstowe/EventSource-Server.git",
   "support": {
     "source": "https://github.com/jonathanstowe/EventSource-Server.git",
-    "bugtracker" : "https://github.com/jonathanstowe/EventSource-Server/issues",
-    "email" : "jns+eventsourceserver@gellyfish.co.uk"
+    "bugtracker": "https://github.com/jonathanstowe/EventSource-Server/issues",
+    "email": "jns+eventsourceserver@gellyfish.co.uk"
   },
-  "perl": "6.*",
-  "raku": "6.*",
-  "resources": [ ],
-  "build-depends": [ ],
-  "depends": [ ],
   "tags": [
     "async",
     "event",
     "web"
   ],
-  "license": "Artistic-2.0",
   "test-depends": [
     "Test"
   ],
   "provides": {
     "EventSource::Server": "lib/EventSource/Server.rakumod"
   },
+  "description": "A simple handler to provide Server Sent Events from a Raku application",
+  "depends": [
+  ],
+  "license": "Artistic-2.0",
+  "name": "EventSource::Server",
+  "raku": "6.*",
+  "resources": [
+  ],
   "authors": [
     "Jonathan Stowe <jns+gh@gellyfish.co.uk>"
   ],
-  "meta-version": "1"
+  "meta-version": "1",
+  "api": "1.0",
+  "version": "0.0.11",
+  "source-url": "https://github.com/jonathanstowe/EventSource-Server.git",
+  "auth": "zef:jonathanstowe",
+  "build-depends": [
+  ]
 }
